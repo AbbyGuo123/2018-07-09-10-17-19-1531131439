@@ -1,4 +1,4 @@
-package practice11;
+package practice13;
 
 public class Klass {
     int number;
@@ -13,14 +13,13 @@ public class Klass {
     public void appendMember(Student student){
         student.klass = this;
         if(this.appendTeacher!=null)
-        this.appendTeacher.outAppendListen(student);
+            System.out.print("I am "+this.appendTeacher.name+". I know "+student.name+" has joined Class "+this.number+".\n");
     }
     public void assignLeader(Student student){
         if(student.klass.equals(this)) {
             this.leader = student;
             if(this.appendTeacher!=null)
-                this.appendTeacher.outLeaderListen(student);
-
+                System.out.print("I am "+this.appendTeacher.name+". I know "+student.name+" become Leader of Class "+this.number+".\n");
         }
         else
             System.out.print("It is not one of us.\n");

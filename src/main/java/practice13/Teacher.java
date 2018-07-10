@@ -1,8 +1,8 @@
-package practice11;
+package practice13;
 
 import java.util.LinkedList;
 
-public class Teacher extends Person{
+public class Teacher extends Person {
     LinkedList<Klass> klass;
     Teacher(int id,String name,int age,LinkedList<Klass> klass){
         super(id,name,age);
@@ -46,12 +46,6 @@ public class Teacher extends Person{
         return false;
     }
 
-    public void outAppendListen(Student student){
-        System.out.print("I am "+this.name+". I know "+student.name+" has joined Class "+student.klass.number+".\n");
-    }
-    public void outLeaderListen(Student student){
-        System.out.print("I am "+this.name+". I know "+student.name+" become Leader of Class "+student.klass.number+".\n");
-    }
 
     public LinkedList<Klass> getClasses() {
         return klass;
