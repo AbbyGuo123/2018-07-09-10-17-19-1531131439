@@ -1,9 +1,14 @@
 package practice13;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Klass {
     int number;
     Student leader;
     Teacher appendTeacher;
+    List<OutPutListen> outPutListens = new ArrayList<>();
+    List<OutPutListen> outPutLeaderListens = new ArrayList<>();
     Klass(int number){
         this.number = number;
     }
@@ -12,14 +17,17 @@ public class Klass {
     }
     public void appendMember(Student student){
         student.klass = this;
-        if(this.appendTeacher!=null)
-            System.out.print("I am "+this.appendTeacher.name+". I know "+student.name+" has joined Class "+this.number+".\n");
+        for(int i=0;i<this.outPutListens.size();i++){
+            this.outPutListens.get(i).outputAppendlog(student);
+        }
     }
     public void assignLeader(Student student){
         if(student.klass.equals(this)) {
             this.leader = student;
-            if(this.appendTeacher!=null)
-                System.out.print("I am "+this.appendTeacher.name+". I know "+student.name+" become Leader of Class "+this.number+".\n");
+            for(int i=0;i<this.outPutLeaderListens.size();i++){
+                this.outPutLeaderListens.get(i).outputLeaderlog(student);
+            }
+
         }
         else
             System.out.print("It is not one of us.\n");
@@ -34,8 +42,13 @@ public class Klass {
     }
 
     //注册添加学生的监听事件
-    public void addAgisterAppendTeacher(Teacher teacher){
-        this.appendTeacher = teacher;
+    public void addAgisterAppendListener(OutPutListen outPutListen){
+        outPutListens.add(outPutListen);
+    }
+
+    //注册添加学生的监听事件
+    public void addAgisterLeaderListener(OutPutListen outPutListen){
+        outPutLeaderListens.add(outPutListen);
     }
 
     @Override

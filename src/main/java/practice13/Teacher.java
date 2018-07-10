@@ -2,14 +2,15 @@ package practice13;
 
 import java.util.LinkedList;
 
-public class Teacher extends Person {
+public class Teacher extends Person implements OutPutListen {
     LinkedList<Klass> klass;
     Teacher(int id,String name,int age,LinkedList<Klass> klass){
         super(id,name,age);
         this.klass = new LinkedList<Klass>();
         for(int i=0;i<klass.size();i++) {
             this.klass.add(klass.get(i));
-            this.klass.get(i).addAgisterAppendTeacher(this);
+            this.klass.get(i).addAgisterAppendListener(this);
+            this.klass.get(i).addAgisterLeaderListener(this);
         }
 
     }
@@ -46,6 +47,13 @@ public class Teacher extends Person {
         return false;
     }
 
+    public String outputAppendlog(Student student){
+        System.out.print("I am "+this.name+". I know "+student.name+" has joined Class "+student.klass.number+".\n");
+        return "I am "+this.name+". I know "+student.name+" has joined Class "+student.klass.number+".\n";
+    }
+    public void outputLeaderlog(Student student){
+        System.out.print("I am "+this.name+". I know "+student.name+" become Leader of Class "+student.klass.number+".\n");
+    }
 
     public LinkedList<Klass> getClasses() {
         return klass;
