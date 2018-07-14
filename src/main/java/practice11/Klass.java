@@ -1,17 +1,23 @@
 package practice11;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Klass {
     int number;
+    List<Student> students;
     Student leader;
     OutPutListen outPutListen;
     Klass(int number){
         this.number = number;
+        students = new ArrayList<>();
     }
     public String getDisplayName(){
         return "Class "+this.number;
     }
     public void appendMember(Student student){
         student.klass = this;
+        students.add(student);
         if(this.outPutListen!=null)
         this.outPutListen.outAppendListen(student);
     }
