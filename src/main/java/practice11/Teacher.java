@@ -2,7 +2,7 @@ package practice11;
 
 import java.util.LinkedList;
 
-public class Teacher extends Person {
+public class Teacher extends Person implements OutPutListen {
     LinkedList<Klass> klass;
     Teacher(int id,String name,int age,LinkedList<Klass> klass){
         super(id,name,age);

@@ -3,7 +3,7 @@ package practice11;
 public class Klass {
     int number;
     Student leader;
-    Teacher appendTeacher;
+    OutPutListen outPutListen;
     Klass(int number){
         this.number = number;
     }
@@ -12,14 +12,14 @@ public class Klass {
     }
     public void appendMember(Student student){
         student.klass = this;
-        if(this.appendTeacher!=null)
-        this.appendTeacher.outAppendListen(student);
+        if(this.outPutListen!=null)
+        this.outPutListen.outAppendListen(student);
     }
     public void assignLeader(Student student){
         if(student.klass.equals(this)) {
             this.leader = student;
-            if(this.appendTeacher!=null)
-                this.appendTeacher.outLeaderListen(student);
+            if(this.outPutListen!=null)
+                this.outPutListen.outLeaderListen(student);
 
         }
         else
@@ -36,7 +36,7 @@ public class Klass {
 
     //注册添加学生的监听事件
     public void addAgisterAppendTeacher(Teacher teacher){
-        this.appendTeacher = teacher;
+        this.outPutListen = teacher;
     }
 
     @Override

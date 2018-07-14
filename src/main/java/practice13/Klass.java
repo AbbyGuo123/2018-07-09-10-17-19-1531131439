@@ -6,7 +6,6 @@ import java.util.List;
 public class Klass {
     int number;
     Student leader;
-    Teacher appendTeacher;
     List<OutPutListen> outPutListens = new ArrayList<>();
     List<OutPutListen> outPutLeaderListens = new ArrayList<>();
     Klass(int number){
